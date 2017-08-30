@@ -524,7 +524,7 @@ static void gui_render_rssi(void) {
     screen_fill_rect(x, 1, GUI_RSSI_BAR_W+1, 5, 0);
     x+=GUI_RSSI_BAR_W+2;
     // show values
-    screen_puts_xy(x, 1, 0, "120|105");
+    //screen_puts_xy(x, 1, 0, "120|105");
 
     // show RSSI
     uint8_t rssi, rssi_telemetry;
@@ -848,12 +848,12 @@ static void gui_render_usb(void) {
 
     // left
     uint16_t x = w/2 + (w/2 * adc_get_channel_rescaled(CHANNEL_ID_RUDDER))/3200 - 2;
-    uint16_t y = h/2 - (h/2 * adc_get_channel_rescaled(CHANNEL_ID_THROTTLE))/3200;
+    uint16_t y = h/2 - (h/2 * adc_get_channel_rescaled(CHANNEL_ID_ELEVATION))/3200;
     screen_set_pixels(10+x-1, 10+y-1, 10+x+1, 10+y+1, 1);
 
     // right
     x = w/2 + (w/2 * adc_get_channel_rescaled(CHANNEL_ID_AILERON))/3200 - 2;
-    y = h/2 - (h/2 * adc_get_channel_rescaled(CHANNEL_ID_ELEVATION))/3200;
+    y = h/2 - (h/2 * adc_get_channel_rescaled(CHANNEL_ID_THROTTLE))/3200;
     screen_set_pixels(128-sx-w+x-1, 10+y-1, 128-sx-w+x+1, 10+y+1, 1);
 
 

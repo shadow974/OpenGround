@@ -228,6 +228,10 @@ static void frsky_receive_packet(void) {
     cc2500_process_packet(&frsky_packet_received, (volatile uint8_t *)&frsky_packet_buffer, \
                       FRSKY_PACKET_BUFFER_SIZE);
 
+
+    // overflow-protection
+    if (frsky_packet_lost_counter == 254) frsky_packet_lost_counter = 20;
+
     // increment counter, will be cleared on valid packet rx
     frsky_packet_lost_counter++;
 
